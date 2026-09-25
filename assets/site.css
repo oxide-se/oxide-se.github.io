@@ -91,7 +91,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #e85d3f; outline-offs
 .intro-copy { max-width: 62rem; position: relative; z-index: 1; }
 .eyebrow { margin: 0 0 1rem; font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 h1, h2 { margin: 0; font-weight: 780; letter-spacing: -.06em; line-height: .98; text-wrap: balance; }
-h1 { max-width: 11ch; font-size: clamp(4.25rem, 10vw, 9rem); }
+h1 { max-width: 12ch; font-size: clamp(3.6rem, 8vw, 7.4rem); }
 .lede { max-width: 49rem; margin: 2.2rem 0 0; font-size: clamp(1.2rem, 2.1vw, 1.65rem); line-height: 1.45; }
 .scroll-cue { position: absolute; left: clamp(1.25rem, 7vw, 8rem); bottom: 2rem; z-index: 2; display: flex; gap: .8rem; font-weight: 700; text-decoration: none; }
 
@@ -108,7 +108,7 @@ h1 { max-width: 11ch; font-size: clamp(4.25rem, 10vw, 9rem); }
 .section-progress a { display: flex; justify-content: flex-end; gap: .6rem; padding: .3rem; font: 700 .72rem/1 ui-monospace, monospace; text-decoration: none; opacity: .45; }
 .section-progress a[aria-current="true"] { opacity: 1; }
 .progress-name { width: 0; overflow: hidden; transition: width .25s ease; }
-.section-progress a:hover .progress-name, .section-progress a:focus-visible .progress-name, .section-progress a[aria-current="true"] .progress-name { width: 6.8rem; }
+.section-progress a:hover .progress-name, .section-progress a:focus-visible .progress-name { width: 6.8rem; }
 
 .chapter {
   min-height: calc(100svh - var(--header-height));
@@ -129,10 +129,22 @@ h1 { max-width: 11ch; font-size: clamp(4.25rem, 10vw, 9rem); }
 .chapter-kernel { color: #281b18; background: var(--salmon); }
 .chapter-number { align-self: start; padding-top: .4rem; font: 750 clamp(2rem, 4vw, 4rem)/1 ui-monospace, monospace; }
 .chapter-content { max-width: 59rem; }
-.chapter h2 { font-size: clamp(3.3rem, 8vw, 7.6rem); }
+.chapter h2 { font-size: clamp(2.65rem, 4.7vw, 4.8rem); }
 .chapter-content > p:not(.eyebrow) { max-width: 42rem; margin: 2rem 0; font-size: clamp(1.05rem, 1.6vw, 1.35rem); }
 .chapter-link { display: inline-flex; gap: 1rem; align-items: center; padding: .75rem 0; font-weight: 800; font-size: 1rem; text-decoration-thickness: 2px; }
-.chapter-note { writing-mode: vertical-rl; justify-self: end; margin: 0; font: 700 .76rem/1 ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; }
+.chapter-note {
+  align-self: stretch;
+  justify-self: start;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: .7rem;
+  margin: 0;
+  padding-left: .5rem;
+  font: 700 .64rem/1 ui-monospace, monospace;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.chapter-note span { writing-mode: vertical-rl; white-space: nowrap; }
 
 .site-footer { display: flex; justify-content: space-between; gap: 3rem; padding: 3.5rem clamp(1.25rem, 7vw, 8rem); color: #fff; background: #0b1f1e; }
 .site-footer p { margin: 0; }
@@ -169,7 +181,7 @@ h1 { max-width: 11ch; font-size: clamp(4.25rem, 10vw, 9rem); }
   pointer-events: none;
 }
 .guide-hero > * { position: relative; z-index: 1; }
-.guide-hero h1 { max-width: 12ch; font-size: clamp(3.8rem, 8vw, 8rem); }
+.guide-hero h1 { max-width: 15ch; font-size: clamp(3rem, 5.8vw, 6rem); }
 .guide-summary { max-width: 40rem; margin: 2rem 0 0; font-size: clamp(1.1rem, 1.8vw, 1.4rem); }
 .outcome { border-top: 3px solid currentColor; padding-top: 1rem; }
 .outcome h2 { font: 800 .8rem/1.2 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
@@ -226,15 +238,28 @@ code { font: .9em/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   .repo-link { padding: 0; border: 0; }
   .intro { min-height: 46rem; padding-top: calc(var(--header-height) + 4rem); align-content: start; }
   .intro::after { right: -4vw; bottom: 4rem; }
-  h1 { font-size: clamp(3.7rem, 18vw, 6rem); }
+  h1 { font-size: clamp(3.15rem, 13vw, 4.8rem); }
   .lede { font-size: 1.15rem; }
   .section-progress { display: none; }
-  .chapter { min-height: auto; grid-template-columns: 1fr; align-content: start; gap: 2rem; padding-top: calc(var(--header-height) + 3rem); padding-bottom: 5rem; }
-  .chapter h2 { font-size: clamp(3rem, 15vw, 5rem); }
+  .chapter { min-height: calc(100svh - var(--header-height)); grid-template-columns: 1fr; align-content: center; gap: 1.4rem; padding-top: calc(var(--header-height) + 1.75rem); padding-bottom: 3rem; }
+  .chapter h2 { font-size: clamp(2.55rem, 10.5vw, 3.8rem); line-height: 1.02; }
+  .chapter-content > p:not(.eyebrow) { margin: 1.4rem 0; font-size: 1rem; }
   .chapter-number { padding: 0; }
-  .chapter-note { writing-mode: initial; justify-self: start; }
+  .chapter-note {
+    align-self: auto;
+    justify-self: stretch;
+    flex-direction: row;
+    gap: 1rem;
+    max-width: 100%;
+    padding-bottom: .4rem;
+    overflow-x: auto;
+    font-size: .66rem;
+    scrollbar-width: thin;
+  }
+  .chapter-note span { writing-mode: initial; }
   .site-footer { flex-direction: column; }
-  .guide-hero { min-height: auto; grid-template-columns: 1fr; align-items: start; padding-top: 5rem; }
+  .guide-hero { min-height: auto; grid-template-columns: 1fr; align-items: start; padding-top: 4rem; }
+  .guide-hero h1 { font-size: clamp(2.65rem, 10vw, 3.8rem); line-height: 1.02; }
   .guide-layout { grid-template-columns: 1fr; }
   .guide-aside { position: static; }
   .next-links { grid-template-columns: 1fr; }

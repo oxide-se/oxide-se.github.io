@@ -47,7 +47,12 @@
           <p>Build a permissive development image, begin with Pico 1 in QEMU—or another supported QEMU or hardware target—then load an isolated Rust application and exchange your first APDU.</p>
           <a class="chapter-link" href="/devkit/">Start with the devkit <span aria-hidden="true">→</span></a>
         </div>
-        <p class="chapter-note">Rust · no_std · APDU</p>
+        <p class="chapter-note" aria-label="Rustlet keywords">
+          <span>Rust · no_std · Rustlet ABI · SE APIs</span>
+          <span>APDU · Post-issuance · OTA deployment · Dynamic load</span>
+          <span>FAE file format · Isolated runtime · Persistent state · Serialization</span>
+          <span>Applet AID · INSTALL / LOAD · Runtime heap · Crypto services</span>
+        </p>
       </section>
 
       <section id="globalplatform" class="chapter chapter-gp" data-section="globalplatform" aria-labelledby="gp-title">
@@ -58,7 +63,13 @@
           <p>Explore how the kernel, registry and Rustlet-backed Security Domains divide transport, authority and secure-channel policy.</p>
           <a class="chapter-link" href="/globalplatform/">Explore Security Domain integration <span aria-hidden="true">→</span></a>
         </div>
-        <p class="chapter-note">Registry · SCP03 · SCP11</p>
+        <p class="chapter-note" aria-label="GlobalPlatform keywords">
+          <span>GP 2.3 · Security Domains · Registry objects · GP object life-cycle</span>
+          <span>Secure Channel · SCP03 S8/S16 · SCP11a/b/c · Key rotation</span>
+          <span>AES-128 · CMAC · SHA-256 · P-256 ECDH · HKDF</span>
+          <span>INSTALL · LOAD · DELETE · STORE DATA · GET STATUS</span>
+          <span>AID hierarchy · Privileges · Card recognition data · Capability data</span>
+        </p>
       </section>
 
       <section id="kernel" class="chapter chapter-kernel" data-section="kernel" aria-labelledby="kernel-title">
@@ -69,7 +80,13 @@
           <p>Contribute to a Rust-based kernel focused on isolation, constrained memory, embedded targets and GlobalPlatform behavior.</p>
           <a class="chapter-link" href="/kernel/">Contribute to the kernel <span aria-hidden="true">→</span></a>
         </div>
-        <p class="chapter-note">Cortex-M · Isolation · Open source</p>
+        <p class="chapter-note" aria-label="Kernel keywords">
+          <span>Rust · no_std · Open source · IoT kernel</span>
+          <span>MPU isolation · Unprivileged runtime · SVC syscalls · Fault recovery</span>
+          <span>XIP · Flash journal · Atomic persistence · Rollback</span>
+          <span>Cortex-M · Native ELF · Stack guards · RAM NX</span>
+          <span>T=0 APDU · HMAC-DRBG · Checked TRNG · Stack monitoring</span>
+        </p>
       </section>
     </main>
 
