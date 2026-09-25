@@ -1,9 +1,9 @@
 :root {
   --ink: #102b2a;
   --paper: #f7f5ed;
-  --mint: #e8f4f3;
-  --navy: #102d4d;
-  --ochre: #f2c75c;
+  --yellow: #f2c75c;
+  --turquoise: #69d3c5;
+  --salmon: #f39a7e;
   --line: currentColor;
   --measure: 72rem;
   --header-height: 4.5rem;
@@ -124,9 +124,9 @@ h1 { max-width: 11ch; font-size: clamp(4.25rem, 10vw, 9rem); }
 .chapter::before, .chapter::after { content: ""; position: absolute; pointer-events: none; opacity: .18; }
 .chapter::before { width: 26vw; height: 1px; top: 28%; right: 0; background: currentColor; }
 .chapter::after { width: 1px; height: 24vh; top: 28%; right: 26vw; background: currentColor; }
-.chapter-devkit { color: #102b2a; background: #e8f4f3; }
-.chapter-gp { color: #fff; background: #102d4d; }
-.chapter-kernel { color: #211f18; background: #f2c75c; }
+.chapter-devkit { color: #211f18; background: var(--yellow); }
+.chapter-gp { color: #102b2a; background: var(--turquoise); }
+.chapter-kernel { color: #281b18; background: var(--salmon); }
 .chapter-number { align-self: start; padding-top: .4rem; font: 750 clamp(2rem, 4vw, 4rem)/1 ui-monospace, monospace; }
 .chapter-content { max-width: 59rem; }
 .chapter h2 { font-size: clamp(3.3rem, 8vw, 7.6rem); }
@@ -141,9 +141,9 @@ h1 { max-width: 11ch; font-size: clamp(4.25rem, 10vw, 9rem); }
 
 /* Guide pages */
 .guide { color: var(--guide-ink, var(--ink)); background: var(--guide-bg, var(--paper)); }
-.guide-devkit { --guide-bg: #e8f4f3; --guide-ink: #102b2a; --guide-accent: #157a72; }
-.guide-gp { --guide-bg: #102d4d; --guide-ink: #ffffff; --guide-accent: #78d4cf; }
-.guide-kernel { --guide-bg: #f2c75c; --guide-ink: #211f18; --guide-accent: #8b4e00; }
+.guide-devkit { --guide-bg: #f2c75c; --guide-ink: #211f18; --guide-accent: #6d5200; }
+.guide-gp { --guide-bg: #69d3c5; --guide-ink: #102b2a; --guide-accent: #075e5b; }
+.guide-kernel { --guide-bg: #f39a7e; --guide-ink: #281b18; --guide-accent: #8e321f; }
 .guide .site-header { color: var(--guide-ink); background: color-mix(in srgb, var(--guide-bg) 92%, transparent); }
 .guide .site-nav { color: inherit; background: transparent; }
 .guide-main { min-height: 100svh; padding-top: var(--header-height); }

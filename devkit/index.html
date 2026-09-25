@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Build the oXiDe SE devkit, start Pico 1 in QEMU or on hardware, load a Rustlet and exchange an APDU.">
-    <meta name="theme-color" content="#e8f4f3">
+    <meta name="description" content="Build the oXiDe SE devkit on Pico 1 QEMU or another supported target, load a Rustlet and exchange an APDU.">
+    <meta name="theme-color" content="#f2c75c">
     <title>Devkit — oXiDe SE</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23102b2a'/%3E%3Cpath d='M8 9h9v5h7v9H15v-5H8z' fill='%23f2c75c'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="/assets/site.css">
@@ -50,7 +50,7 @@
           <section id="prepare">
             <p class="eyebrow">Before you begin</p>
             <h2>Choose the shortest path.</h2>
-            <p>Start with Pico 1 under the project’s QEMU fork for a repeatable software loop. Use a physical Raspberry Pi Pico with OpenOCD when you need to validate real boot, flash, UART and board behavior.</p>
+            <p>The shortest repeatable loop starts with Pico 1 under the project’s QEMU fork. The board catalogue also includes other QEMU and hardware targets; follow each target’s documented runner and prerequisites.</p>
             <h3>Prerequisites</h3>
             <ul>
               <li>The Rust nightly selected by the repository, Cargo and ARM GNU tools.</li>
@@ -65,7 +65,7 @@
             <ol class="step-list">
               <li><div><strong>Clone the pinned beta.</strong>Check out the release tag and its two recorded submodules.</div></li>
               <li><div><strong>Install the documented tools.</strong>Follow the versioned setup guide for host and target prerequisites.</div></li>
-              <li><div><strong>Build the permissive manifest.</strong>Use the devkit composition for Pico 1.</div></li>
+              <li><div><strong>Build the permissive manifest.</strong>Use the devkit composition for your chosen target; the Pico 1 example is shown below.</div></li>
             </ol>
             <pre><code>git clone --recurse-submodules --branch v0.9.0-beta.1 \
   https://github.com/oxide-se/oxide-se.git
@@ -79,7 +79,7 @@ cargo run build --config configs/config_devkit.toml raspi-pico1</code></pre>
             <p class="eyebrow">Run</p>
             <h2>Boot, load, exchange.</h2>
             <ol class="step-list">
-              <li><div><strong>Start Pico 1.</strong>Use the pinned QEMU fork, or program and reset physical hardware through OpenOCD.</div></li>
+              <li><div><strong>Start the target.</strong>Use the pinned fork for Pico 1 QEMU, or the documented QEMU/OpenOCD runner for another supported target.</div></li>
               <li><div><strong>Connect the APDU tool.</strong>QEMU exposes a serial socket. Hardware uses the UART bridge; provide <code>--serial</code> when more than one port is present.</div></li>
               <li><div><strong>Load a first Rustlet.</strong>Follow the dynamic-loading walkthrough, then select the application and exchange its first APDU.</div></li>
             </ol>
