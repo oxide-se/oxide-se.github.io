@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore GlobalPlatform Security Domain integration in oXiDe SE, from APDU transport and registry management to Rustlet-backed policy.">
+    <meta name="theme-color" content="#102d4d">
+    <title>GlobalPlatform support — oXiDe SE</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23102b2a'/%3E%3Cpath d='M8 9h9v5h7v9H15v-5H8z' fill='%23f2c75c'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/assets/site.css">
+    <script src="/assets/site.js" defer></script>
+  </head>
+  <body class="guide guide-gp">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="oXiDe SE home">oXiDe <span>SE</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a href="/devkit/">Devkit</a><a aria-current="page" href="/globalplatform/">GlobalPlatform</a><a href="/kernel/">Kernel</a><a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a></nav>
+    </header>
+    <main id="main" class="guide-main">
+      <section class="guide-hero" data-number="02" aria-labelledby="page-title">
+        <div><p class="eyebrow">02 / GlobalPlatform support</p><h1 id="page-title">Build Security Domains for IoT.</h1><p class="guide-summary">For embedded developers and IoT teams exploring application management, administrative authorities and Secure Channels.</p></div>
+        <div class="outcome"><h2>First outcome</h2><p>A reproducible Security Domain experiment, with policy implemented by a Rustlet and registry operations retained by the kernel.</p></div>
+      </section>
+      <div class="guide-layout">
+        <aside class="guide-aside" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#model">Understand the split</a></li><li><a href="#experiment">Build an experiment</a></li><li><a href="#limits">Know the limits</a></li><li><a href="#continue">Continue</a></li></ul></aside>
+        <div class="guide-content">
+          <section id="model"><p class="eyebrow">Architecture</p><h2>Keep transport, registry and policy distinct.</h2><p>The kernel owns APDU transport, registry mutation, object ancestry and lifecycle checks. A selected Security Domain supplies administrative policy, discovery data, Secure Channel establishment and protected-APDU transforms. Hardware interfaces remain part of the kernel port.</p><div class="callout"><strong>Not a drop-in RTOS library.</strong>oXiDe SE is a Secure Element OS research platform. Integrating it with a main operating system requires board and interface work. TrustZone integration remains a direction, not a completed capability.</div></section>
+          <section id="experiment"><p class="eyebrow">Practical path</p><h2>Move from a neutral SD to delegated SCP.</h2><ol class="step-list">
+            <li><div><strong>Read the guided example.</strong>Start with the versioned Security Domain tutorial and its role model.</div></li>
+            <li><div><strong>Choose the right reference.</strong><code>simple_security_domain</code> is a neutral starting point. Its empty trait implementation advertises no SCP and rejects establishment commands. <code>complete_security_domain</code> contains the fuller administrative implementation.</div></li>
+            <li><div><strong>Declare the SD.</strong>Copy a validated manifest, point it at your Rustlet-backed Security Domain and preserve the explicit protocol and key configuration.</div></li>
+            <li><div><strong>Build native ELF.</strong>Produce <code>target/kernel/firmware/kernel.elf</code>, then run the documented APDU exchanges and test scenario.</div></li>
+            <li><div><strong>Study the authority model.</strong>Continue into the developer and kernel architecture guides for registry ownership, SCP03/SCP11 and persistence.</div></li>
+          </ol><div class="callout"><strong>Declaration alone does not add a protocol.</strong>A Rustlet that merely implements the Security Domain trait does not inherit SCP from the kernel. Support must be implemented and advertised explicitly.</div></section>
+          <section id="limits"><p class="eyebrow">Research boundaries</p><h2>Evaluate with the open work in view.</h2><ul><li>Functional random-number tests do not establish an entropy bound; source qualification remains open.</li><li>Normal Security Domain hook rejection still has an incomplete live-state rollback path.</li><li>Rustlet-backed Security Domain execution is covered, but dynamic loading of every new Security Domain deployment path is not exhaustively qualified.</li><li>Pico 2 is validated on hardware through OpenOCD; Pico 2 QEMU support is not claimed.</li></ul><p>Use the versioned TODO as the current source for these limits instead of treating this summary as a conformance or certification claim.</p></section>
+          <section id="continue"><p class="eyebrow">Versioned documentation</p><h2>Follow the implementation.</h2><div class="next-links">
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/docs/security.domain.getting.started.md"><strong>Security Domain tutorial →</strong>Build the neutral example and progress toward delegated SCP03.</a>
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/docs/security.domain.developper.guide.md"><strong>Developer guide →</strong>Implement policy, discovery and secure-channel behavior.</a>
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/docs/kernel.gp.architecture.md"><strong>Kernel GP architecture →</strong>Understand authorities, registry boundaries and protocol layers.</a>
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/docs/TODO.md"><strong>Open qualification work →</strong>Review remaining persistence, entropy and Security Domain tasks.</a>
+          </div></section>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v0.9.0-beta.1</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v0.9.0-beta.1">Release</a><a href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/LICENSE">License</a></nav></footer>
+  </body>
+</html>

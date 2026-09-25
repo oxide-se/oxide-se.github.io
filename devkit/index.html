@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Build the oXiDe SE devkit, start Pico 1 in QEMU or on hardware, load a Rustlet and exchange an APDU.">
+    <meta name="theme-color" content="#e8f4f3">
+    <title>Devkit — oXiDe SE</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23102b2a'/%3E%3Cpath d='M8 9h9v5h7v9H15v-5H8z' fill='%23f2c75c'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/assets/site.css">
+    <script src="/assets/site.js" defer></script>
+  </head>
+  <body class="guide guide-devkit">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="oXiDe SE home">oXiDe <span>SE</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a aria-current="page" href="/devkit/">Devkit</a>
+        <a href="/globalplatform/">GlobalPlatform</a>
+        <a href="/kernel/">Kernel</a>
+        <a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main" class="guide-main">
+      <section class="guide-hero" data-number="01" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">01 / Devkit</p>
+          <h1 id="page-title">Prototype your first Rustlet.</h1>
+          <p class="guide-summary">For Rust developers who want to try a small isolated application on a Secure Element research platform.</p>
+        </div>
+        <div class="outcome">
+          <h2>First outcome</h2>
+          <p>A running devkit image, one loaded Rustlet and a successful APDU exchange.</p>
+        </div>
+      </section>
+
+      <div class="guide-layout">
+        <aside class="guide-aside" aria-label="On this page">
+          <h2>On this page</h2>
+          <ul>
+            <li><a href="#prepare">Prepare</a></li>
+            <li><a href="#build">Build the image</a></li>
+            <li><a href="#run">Run and load</a></li>
+            <li><a href="#continue">Continue</a></li>
+          </ul>
+        </aside>
+        <div class="guide-content">
+          <section id="prepare">
+            <p class="eyebrow">Before you begin</p>
+            <h2>Choose the shortest path.</h2>
+            <p>Start with Pico 1 under the project’s QEMU fork for a repeatable software loop. Use a physical Raspberry Pi Pico with OpenOCD when you need to validate real boot, flash, UART and board behavior.</p>
+            <h3>Prerequisites</h3>
+            <ul>
+              <li>The Rust nightly selected by the repository, Cargo and ARM GNU tools.</li>
+              <li>QEMU build dependencies for the Pico 1 software path.</li>
+              <li>For hardware: a Pico, a CMSIS-DAP-compatible SWD probe, OpenOCD with RP2040 support and a 115200-baud UART bridge.</li>
+            </ul>
+          </section>
+
+          <section id="build">
+            <p class="eyebrow">Build</p>
+            <h2>Create the devkit image.</h2>
+            <ol class="step-list">
+              <li><div><strong>Clone the pinned beta.</strong>Check out the release tag and its two recorded submodules.</div></li>
+              <li><div><strong>Install the documented tools.</strong>Follow the versioned setup guide for host and target prerequisites.</div></li>
+              <li><div><strong>Build the permissive manifest.</strong>Use the devkit composition for Pico 1.</div></li>
+            </ol>
+            <pre><code>git clone --recurse-submodules --branch v0.9.0-beta.1 \
+  https://github.com/oxide-se/oxide-se.git
+cd oxide-se
+cargo run build --config configs/config_devkit.toml raspi-pico1</code></pre>
+            <p>The expected artifact is <code>target/kernel/firmware/kernel.elf</code>.</p>
+            <div class="callout"><strong>Build stops at an ELF.</strong>It does not flash a board or start QEMU. Choose one of the startup paths in the getting-started guide next.</div>
+          </section>
+
+          <section id="run">
+            <p class="eyebrow">Run</p>
+            <h2>Boot, load, exchange.</h2>
+            <ol class="step-list">
+              <li><div><strong>Start Pico 1.</strong>Use the pinned QEMU fork, or program and reset physical hardware through OpenOCD.</div></li>
+              <li><div><strong>Connect the APDU tool.</strong>QEMU exposes a serial socket. Hardware uses the UART bridge; provide <code>--serial</code> when more than one port is present.</div></li>
+              <li><div><strong>Load a first Rustlet.</strong>Follow the dynamic-loading walkthrough, then select the application and exchange its first APDU.</div></li>
+            </ol>
+            <div class="callout"><strong>A development configuration.</strong>The devkit uses a permissive root and no Secure Channel. Anyone with access to the APDU link may request deployment. It is for prototyping, not production security policy.</div>
+          </section>
+
+          <section id="continue">
+            <p class="eyebrow">Versioned documentation</p>
+            <h2>Continue from the result.</h2>
+            <div class="next-links">
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/docs/getting-started.md"><strong>Development-kit walkthrough →</strong>Build QEMU, boot the image, load a Rustlet and send APDUs.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/docs/rustlets.getting.started.md"><strong>Rustlets getting started →</strong>Create an application from the template and implement a handler.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/docs/rustlet.developper.guide.md"><strong>Rustlet developer guide →</strong>Go deeper into the runtime, ABI and application model.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/tree/v0.9.0-beta.1/rustlets/rustlet_template"><strong>Rustlet template →</strong>Start from the repository’s minimal standalone application.</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v0.9.0-beta.1</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v0.9.0-beta.1">Release</a><a href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/LICENSE">License</a></nav></footer>
+  </body>
+</html>

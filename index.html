@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="oXiDe SE is an open-source research platform for Rustlets, GlobalPlatform Security Domains and Secure Element operating systems.">
+    <meta name="theme-color" content="#102b2a">
+    <title>oXiDe SE — Open Secure Element research</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23102b2a'/%3E%3Cpath d='M8 9h9v5h7v9H15v-5H8z' fill='%23f2c75c'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/assets/site.css">
+    <script src="/assets/site.js" defer></script>
+  </head>
+  <body class="home">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="oXiDe SE home">oXiDe <span>SE</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#devkit">Devkit</a>
+        <a href="#globalplatform">GlobalPlatform</a>
+        <a href="#kernel">Kernel</a>
+        <a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <p class="eyebrow">Research beta — v0.9.0-beta.1</p>
+          <h1 id="intro-title">One open platform.<br>Three ways in.</h1>
+          <p class="lede">An open-source research platform for Rustlets, GlobalPlatform Security Domains and Secure Element operating systems.</p>
+        </div>
+        <a class="scroll-cue" href="#devkit"><span>Explore the project</span><span aria-hidden="true">↓</span></a>
+      </section>
+
+      <div class="section-progress" aria-label="Page sections">
+        <a href="#devkit" data-progress="devkit"><span>01</span><span class="progress-name">Devkit</span></a>
+        <a href="#globalplatform" data-progress="globalplatform"><span>02</span><span class="progress-name">GlobalPlatform</span></a>
+        <a href="#kernel" data-progress="kernel"><span>03</span><span class="progress-name">Kernel</span></a>
+      </div>
+
+      <section id="devkit" class="chapter chapter-devkit" data-section="devkit" aria-labelledby="devkit-title">
+        <div class="chapter-number" aria-hidden="true">01</div>
+        <div class="chapter-content">
+          <p class="eyebrow">Devkit</p>
+          <h2 id="devkit-title">Prototype your first Rustlet.</h2>
+          <p>Build a permissive development image, start Pico 1 in QEMU or on hardware, load an isolated Rust application and exchange your first APDU.</p>
+          <a class="chapter-link" href="/devkit/">Start with the devkit <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="chapter-note">Rust · no_std · APDU</p>
+      </section>
+
+      <section id="globalplatform" class="chapter chapter-gp" data-section="globalplatform" aria-labelledby="gp-title">
+        <div class="chapter-number" aria-hidden="true">02</div>
+        <div class="chapter-content">
+          <p class="eyebrow">GlobalPlatform support</p>
+          <h2 id="gp-title">Build Security Domains for IoT.</h2>
+          <p>Explore how the kernel, registry and Rustlet-backed Security Domains divide transport, authority and secure-channel policy.</p>
+          <a class="chapter-link" href="/globalplatform/">Explore Security Domain integration <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="chapter-note">Registry · SCP03 · SCP11</p>
+      </section>
+
+      <section id="kernel" class="chapter chapter-kernel" data-section="kernel" aria-labelledby="kernel-title">
+        <div class="chapter-number" aria-hidden="true">03</div>
+        <div class="chapter-content">
+          <p class="eyebrow">Open-source kernel</p>
+          <h2 id="kernel-title">Help build an open Secure Element OS.</h2>
+          <p>Contribute to a Rust-based kernel focused on isolation, constrained memory, embedded targets and GlobalPlatform behavior.</p>
+          <a class="chapter-link" href="/kernel/">Contribute to the kernel <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="chapter-note">Cortex-M · Isolation · Open source</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p class="footer-brand">oXiDe Secure Element</p>
+        <p>Research beta — v0.9.0-beta.1</p>
+      </div>
+      <nav aria-label="Project links">
+        <a href="https://github.com/oxide-se/oxide-se">Code</a>
+        <a href="https://github.com/oxide-se/oxide-se/releases/tag/v0.9.0-beta.1">Release</a>
+        <a href="https://github.com/oxide-se/oxide-se/tree/v0.9.0-beta.1/docs">Documentation</a>
+        <a href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/LICENSE">License</a>
+        <a href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.1/CONTRIBUTING.md">Contribute</a>
+      </nav>
+    </footer>
+  </body>
+</html>
