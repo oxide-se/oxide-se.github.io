@@ -19,6 +19,7 @@
         <a aria-current="page" href="/devkit/">Devkit</a>
         <a href="/globalplatform/">GlobalPlatform</a>
         <a href="/kernel/">Kernel</a>
+        <a href="/api/v0.9.0-beta.2/rustlet_runtime/">API docs</a>
         <a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -120,6 +121,8 @@ cd rustlets/my_first_rustlet
 RUSTLET_TARGET=thumbv6m-none-eabi cargo build-fae
 cd ../..</code></pre>
             <p>Deploy the resulting <code>rustlets/my_first_rustlet/build/my_first_rustlet.fae</code> with an unused test AID, then select that same instance AID. Changing a Rustlet does not require rebuilding or reflashing the running devkit.</p>
+            <p><a class="chapter-link" href="/api/v0.9.0-beta.2/rustlet_runtime/">Open the Rustlet API reference <span aria-hidden="true">→</span></a></p>
+            <p>The versioned Rustdoc documents <code>Rustlet</code>, <code>declare_rustlet!</code>, typed APDU processing, persistence and kernel-backed cryptographic services. Keep it open while implementing <code>src/main.rs</code>.</p>
             <div class="callout"><strong>Two documented routes.</strong>The development-kit walkthrough uses dynamic loading on Pico 1. The separate Rustlets getting-started exercise demonstrates template authoring through a predeployed <code>mps2-an385</code> image and therefore uses <code>thumbv7m-none-eabi</code>. Do not mix its target triple or transport with the Pico 1 commands above.</div>
           </section>
 
