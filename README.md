@@ -20,10 +20,14 @@ root-relative paths, matching its deployment at `https://oxide-se.github.io/`.
 1. Update the version label and release URL in the four HTML pages.
 2. Update every version-pinned documentation URL (`/blob/<tag>/…` and
    `/tree/<tag>/…`).
-3. Recheck commands and limitations against the documentation at the new tag.
-4. Preview `/`, `/devkit/`, `/globalplatform/`, `/kernel/`, and `/404.html` on
+3. Generate the Rustlet reference from the clean release commit and copy the
+   complete `api/<tag>/` subtree into this repository without removing older
+   versions.
+4. Recheck commands and limitations against the documentation at the new tag.
+5. Preview `/`, `/devkit/`, `/globalplatform/`, `/kernel/`, the versioned API,
+   and `/404.html` on
    desktop and mobile widths.
-5. Validate local links, keyboard focus, reduced motion, contrast, and 200%
+6. Validate local links, keyboard focus, reduced motion, contrast, and 200%
    zoom before publishing from `main` at the repository root.
 
 The site intentionally has no build step or external runtime dependency.
