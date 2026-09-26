@@ -43,6 +43,7 @@
             <li><a href="#prepare">Prepare</a></li>
             <li><a href="#build">Build the image</a></li>
             <li><a href="#run">Run and load</a></li>
+            <li><a href="#create">Create a Rustlet</a></li>
             <li><a href="#continue">Continue</a></li>
           </ul>
         </aside>
@@ -83,7 +84,43 @@ cargo run build --config configs/config_devkit.toml raspi-pico1</code></pre>
               <li><div><strong>Connect the APDU tool.</strong>QEMU exposes a serial socket. Hardware uses the UART bridge; provide <code>--serial</code> when more than one port is present.</div></li>
               <li><div><strong>Load a first Rustlet.</strong>Follow the dynamic-loading walkthrough, then select the application and exchange its first APDU.</div></li>
             </ol>
+            <p>For the documented Pico 1 QEMU path, build the host tool before boot and keep the socket path consistent:</p>
+            <pre><code>cargo build -p apdu_tool
+tooling/qemu-rp2040-pico/build/qemu-system-arm \
+  -machine raspi-pico -display none -monitor none \
+  -chardev socket,id=serial0,path=/tmp/oxide-se-pico1.sock,server=on,wait=on \
+  -serial chardev:serial0 \
+  -semihosting-config enable=on,target=native \
+  -kernel target/kernel/firmware/kernel.elf</code></pre>
+            <p>In a second terminal, receive the one-time boot ATR, build the checked tutorial Rustlet for Pico 1, then deploy and select it:</p>
+            <pre><code>target/debug/apdu_tool -v \
+  --serial /tmp/oxide-se-pico1.sock \
+  --atr-timeout infinite atr
+
+cd rustlets/tests
+RUSTLET_TARGET=thumbv6m-none-eabi cargo run build-fae getting_started_test
+cd ../..
+
+target/debug/apdu_tool --progress gp deploy \
+  A0000047504F5320 \
+  rustlets/tests/getting_started_test/build/rustlet_getting_started_test.fae \
+  A0000047504F5320
+target/debug/apdu_tool select A0000047504F5320
+target/debug/apdu_tool raw 00:04:00:00:00:03</code></pre>
+            <p>The final command should return <code>10 11 12</code> and status <code>90 00</code>. The ATR command creates <code>session.json</code>; run the remaining commands from the same directory and do not read the ATR again during that boot.</p>
             <div class="callout"><strong>A development configuration.</strong>The devkit uses a permissive root and no Secure Channel. Anyone with access to the APDU link may request deployment. It is for prototyping, not production security policy.</div>
+          </section>
+
+          <section id="create">
+            <p class="eyebrow">Authoring</p>
+            <h2>Create your own Rustlet.</h2>
+            <p>Copy the standalone template beside <code>rustlet_runtime</code>, rename the package in its <code>Cargo.toml</code>, and implement the APDU handler in <code>src/main.rs</code>. For the Pico 1 devkit above, keep the ARMv6-M target:</p>
+            <pre><code>cp -R rustlets/rustlet_template rustlets/my_first_rustlet
+cd rustlets/my_first_rustlet
+RUSTLET_TARGET=thumbv6m-none-eabi cargo build-fae
+cd ../..</code></pre>
+            <p>Deploy the resulting <code>rustlets/my_first_rustlet/build/my_first_rustlet.fae</code> with an unused test AID, then select that same instance AID. Changing a Rustlet does not require rebuilding or reflashing the running devkit.</p>
+            <div class="callout"><strong>Two documented routes.</strong>The development-kit walkthrough uses dynamic loading on Pico 1. The separate Rustlets getting-started exercise demonstrates template authoring through a predeployed <code>mps2-an385</code> image and therefore uses <code>thumbv7m-none-eabi</code>. Do not mix its target triple or transport with the Pico 1 commands above.</div>
           </section>
 
           <section id="continue">
