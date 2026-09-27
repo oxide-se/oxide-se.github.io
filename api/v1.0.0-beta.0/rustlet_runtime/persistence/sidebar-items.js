@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["PersistenceError"],"struct":["ReadFlavor","WriteFlavor"],"trait":["StateReader","StateWriter"]};

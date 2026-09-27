@@ -15,7 +15,7 @@
     <header class="site-header">
       <a class="brand" href="/" aria-label="oXiDe SE home">oXiDe <span>SE</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a href="/devkit/">Devkit</a><a href="/globalplatform/">GlobalPlatform</a><a aria-current="page" href="/kernel/">Kernel</a><a href="/api/v0.9.0-beta.2/rustlet_runtime/">API docs</a><a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a></nav>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation"><a href="/devkit/">Devkit</a><a href="/globalplatform/">GlobalPlatform</a><a aria-current="page" href="/kernel/">Kernel</a><a href="/api/v1.0.0-beta.0/rustlet_runtime/">API docs</a><a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a></nav>
     </header>
     <main id="main" class="guide-main">
       <section class="guide-hero" data-number="03" aria-labelledby="page-title">
@@ -36,14 +36,14 @@ cargo clippy --workspace --all-targets --offline -- -D warnings
 cargo test --offline</code></pre><p>Formatting and Clippy enforce source and lint policy. Host tests cover Rust test harnesses and the workspace’s configured test behavior; QEMU integration campaigns add target execution and APDU paths. Hardware campaigns additionally exercise real flash, reset, UART and board behavior. A passing host suite is not a hardware-validation claim.</p><div class="callout"><strong>Begin with the native ELF path.</strong>Kernel FAE images are deprecated. Rustlet FAE payloads remain supported; the kernel itself is built as a native fixed-address ELF.</div></section>
           <section id="choose"><p class="eyebrow">Contribution areas</p><h2>Pick one observable improvement.</h2><ul><li>Clarify a guide or make a documented command reproducible.</li><li>Add a regression scenario around an APDU, persistence or isolation edge.</li><li>Reduce copies or stack pressure within a measured path.</li><li>Narrow and document an <code>unsafe</code> boundary.</li><li>Bring up or strengthen a Cortex-M board port.</li><li>Correct a GlobalPlatform behavior and demonstrate it with a focused test.</li></ul><p>Open an Issue to describe a problem or proposal, then follow the repository’s existing contribution guidance. The public branch is a release-snapshot showcase; site commits and private development history do not belong in it.</p><p><a class="chapter-link" href="https://github.com/oxide-se/oxide-se/issues">Browse or open an Issue <span aria-hidden="true">→</span></a></p></section>
           <section id="continue"><p class="eyebrow">Versioned documentation</p><h2>Go deeper.</h2><div class="next-links">
-            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/docs/kernel.developer.guide.md"><strong>Kernel developer guide →</strong>Build, debug and validate the firmware.</a>
-            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/docs/newboard.porting.guide.md"><strong>New-board porting guide →</strong>Progress from build-only to target qualification.</a>
-            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/docs/TODO.md"><strong>Open technical work →</strong>Find measured gaps and incomplete qualification.</a>
-            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/CONTRIBUTING.md"><strong>Contribution guidance →</strong>Use the established debugging and Rust-tooling discipline.</a>
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/kernel.developer.guide.md"><strong>Kernel developer guide →</strong>Build, debug and validate the firmware.</a>
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/newboard.porting.guide.md"><strong>New-board porting guide →</strong>Progress from build-only to target qualification.</a>
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/TODO.md"><strong>Open technical work →</strong>Find measured gaps and incomplete qualification.</a>
+            <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/CONTRIBUTING.md"><strong>Contribution guidance →</strong>Use the established debugging and Rust-tooling discipline.</a>
           </div></section>
         </div>
       </div>
     </main>
-    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v0.9.0-beta.2</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v0.9.0-beta.2">Release</a><a href="/api/v0.9.0-beta.2/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/LICENSE">License</a></nav></footer>
+    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v1.0.0-beta.0</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.0">Release</a><a href="/api/v1.0.0-beta.0/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/LICENSE">License</a></nav></footer>
   </body>
 </html>

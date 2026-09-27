@@ -19,7 +19,7 @@
         <a aria-current="page" href="/devkit/">Devkit</a>
         <a href="/globalplatform/">GlobalPlatform</a>
         <a href="/kernel/">Kernel</a>
-        <a href="/api/v0.9.0-beta.2/rustlet_runtime/">API docs</a>
+        <a href="/api/v1.0.0-beta.0/rustlet_runtime/">API docs</a>
         <a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -69,7 +69,7 @@
               <li><div><strong>Install the documented tools.</strong>Follow the versioned setup guide for host and target prerequisites.</div></li>
               <li><div><strong>Build the permissive manifest.</strong>Use the devkit composition for your chosen target; the Pico 1 example is shown below.</div></li>
             </ol>
-            <pre><code>git clone --recurse-submodules --branch v0.9.0-beta.2 \
+            <pre><code>git clone --recurse-submodules --branch v1.0.0-beta.0 \
   https://github.com/oxide-se/oxide-se.git
 cd oxide-se
 cargo run build --config configs/config_devkit.toml raspi-pico1</code></pre>
@@ -121,7 +121,7 @@ cd rustlets/my_first_rustlet
 RUSTLET_TARGET=thumbv6m-none-eabi cargo build-fae
 cd ../..</code></pre>
             <p>Deploy the resulting <code>rustlets/my_first_rustlet/build/my_first_rustlet.fae</code> with an unused test AID, then select that same instance AID. Changing a Rustlet does not require rebuilding or reflashing the running devkit.</p>
-            <p><a class="chapter-link" href="/api/v0.9.0-beta.2/rustlet_runtime/">Open the Rustlet API reference <span aria-hidden="true">→</span></a></p>
+            <p><a class="chapter-link" href="/api/v1.0.0-beta.0/rustlet_runtime/">Open the Rustlet API reference <span aria-hidden="true">→</span></a></p>
             <p>The versioned Rustdoc documents <code>Rustlet</code>, <code>declare_rustlet!</code>, typed APDU processing, persistence and kernel-backed cryptographic services. Keep it open while implementing <code>src/main.rs</code>.</p>
             <div class="callout"><strong>Two documented routes.</strong>The development-kit walkthrough uses dynamic loading on Pico 1. The separate Rustlets getting-started exercise demonstrates template authoring through a predeployed <code>mps2-an385</code> image and therefore uses <code>thumbv7m-none-eabi</code>. Do not mix its target triple or transport with the Pico 1 commands above.</div>
           </section>
@@ -130,16 +130,16 @@ cd ../..</code></pre>
             <p class="eyebrow">Versioned documentation</p>
             <h2>Continue from the result.</h2>
             <div class="next-links">
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/docs/getting-started.md"><strong>Development-kit walkthrough →</strong>Build QEMU, boot the image, load a Rustlet and send APDUs.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/docs/rustlets.getting.started.md"><strong>Rustlets getting started →</strong>Create an application from the template and implement a handler.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/docs/rustlet.developper.guide.md"><strong>Rustlet developer guide →</strong>Go deeper into the runtime, ABI and application model.</a>
-              <a class="next-link" href="/api/v0.9.0-beta.2/rustlet_runtime/"><strong>Rustlet API reference →</strong>Browse the versioned Rustdoc for the runtime, APDU, crypto and Security Domain APIs.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/tree/v0.9.0-beta.2/rustlets/rustlet_template"><strong>Rustlet template →</strong>Start from the repository’s minimal standalone application.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/getting-started.md"><strong>Development-kit walkthrough →</strong>Build QEMU, boot the image, load a Rustlet and send APDUs.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/rustlets.getting.started.md"><strong>Rustlets getting started →</strong>Create an application from the template and implement a handler.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/rustlet.developper.guide.md"><strong>Rustlet developer guide →</strong>Go deeper into the runtime, ABI and application model.</a>
+              <a class="next-link" href="/api/v1.0.0-beta.0/rustlet_runtime/"><strong>Rustlet API reference →</strong>Browse the versioned Rustdoc for the runtime, APDU, crypto and Security Domain APIs.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/tree/v1.0.0-beta.0/rustlets/rustlet_template"><strong>Rustlet template →</strong>Start from the repository’s minimal standalone application.</a>
             </div>
           </section>
         </div>
       </div>
     </main>
-    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v0.9.0-beta.2</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v0.9.0-beta.2">Release</a><a href="/api/v0.9.0-beta.2/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v0.9.0-beta.2/LICENSE">License</a></nav></footer>
+    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v1.0.0-beta.0</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.0">Release</a><a href="/api/v1.0.0-beta.0/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/LICENSE">License</a></nav></footer>
   </body>
 </html>
