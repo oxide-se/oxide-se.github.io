@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["load_rollback_state","reset_rollback_heap"],"mod":["allocator","apdu","crypto","descriptor_return","exit","handler_return","panic"]};

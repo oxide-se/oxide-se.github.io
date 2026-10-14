@@ -20,7 +20,7 @@
         <a href="/globalplatform/">GlobalPlatform</a>
         <a href="/kernel/">Kernel</a>
         <a aria-current="page" href="/downloads/">Downloads</a>
-        <a href="/api/v1.0.0-beta.0/rustlet_runtime/">API docs</a>
+        <a href="/api/v1.0.0-beta.1/rustlet_runtime/">API docs</a>
         <a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -51,7 +51,7 @@
           <section id="images">
             <p class="eyebrow">Versioned files</p>
             <h2>Choose your board and format.</h2>
-            <p>These four files are a dated development bundle, separate from the public <code>v1.0.0-beta.0</code> source snapshot. A matching source release will follow; do not assume that a Rustlet built from the earlier tag has the same ABI.</p>
+            <p>These four files are the ready-built devkit firmware for the public <code>v1.0.0-beta.1</code> source snapshot. Build Rustlets and <code>apdu_tool</code> from that tag so their ABI and workflow match the images.</p>
             <div class="download-grid">
               <article class="download-card">
                 <h3>Pico 1 <small>RP2040 · 2 MiB flash</small></h3>
@@ -86,7 +86,7 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
             <div class="callout"><strong>Full-flash erase.</strong>Each UF2 resets the board's entire declared flash, including previously loaded applications and persistent data. The documented OpenOCD installation path also erases the flash. Back up anything you need first.</div>
             <p>USB BOOTSEL installs the firmware; runtime APDUs use UART0 on GPIO0/GPIO1 at 115200 baud. Open the UART client before boot if you need to capture the one-time ATR.</p>
             <p>This bundle passed a Pico 1 QEMU tutorial run and a physical Pico 2 OpenOCD tutorial run. Physical Pico 1 installation and USB BOOTSEL transfer were not exercised for this bundle. The UF2 payloads were verified against the corresponding full-flash ELF images.</p>
-            <p><a href="/devkit/">Explore the Devkit path</a>. Its existing build walkthrough is pinned to <code>v1.0.0-beta.0</code>; the matching tutorial for these dated images will accompany the next source release.</p>
+            <p><a href="/devkit/">Explore the Devkit path</a>, or follow the <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/getting-started.md">versioned getting-started guide</a>. Both are pinned to <code>v1.0.0-beta.1</code> and match these images.</p>
           </section>
         </div>
       </div>
@@ -94,7 +94,7 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
 
     <footer class="site-footer guide-footer">
       <div><p class="footer-brand">oXiDe Secure Element</p><p>Devkit images — 2026.10.14</p></div>
-      <nav aria-label="Project links"><a href="/">Home</a><a href="/devkit/">Devkit</a><a href="/downloads/devkit-2026.10.14/SHA256SUMS">SHA256SUMS</a><a href="https://github.com/oxide-se/oxide-se">Code</a></nav>
+      <nav aria-label="Project links"><a href="/">Home</a><a href="/devkit/">Devkit</a><a href="/downloads/devkit-2026.10.14/SHA256SUMS">SHA256SUMS</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.1">Release</a><a href="/api/v1.0.0-beta.1/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se">Code</a></nav>
     </footer>
   </body>
 </html>

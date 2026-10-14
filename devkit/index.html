@@ -20,7 +20,7 @@
         <a href="/globalplatform/">GlobalPlatform</a>
         <a href="/kernel/">Kernel</a>
         <a href="/downloads/">Downloads</a>
-        <a href="/api/v1.0.0-beta.0/rustlet_runtime/">API docs</a>
+        <a href="/api/v1.0.0-beta.1/rustlet_runtime/">API docs</a>
         <a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -50,15 +50,15 @@
           </ul>
         </aside>
         <div class="guide-content">
-          <div class="callout"><strong>Want a ready-built devkit?</strong><a href="/downloads/">Download dated Pico 1 or Pico 2 ELF/UF2 images and their SHA-256 checksums.</a> The build walkthrough below remains pinned to the public <code>v1.0.0-beta.0</code> source snapshot; the dated images are a separate bundle.</div>
+          <div class="callout"><strong>Want a ready-built devkit?</strong><a href="/downloads/">Download the Pico 1 or Pico 2 ELF/UF2 images and their SHA-256 checksums.</a> The images, walkthrough and Rustlet ABI match the public <code>v1.0.0-beta.1</code> release.</div>
           <section id="prepare">
             <p class="eyebrow">Before you begin</p>
             <h2>Choose the shortest path.</h2>
-            <p>The shortest repeatable loop starts with Pico 1 under the project’s QEMU fork. The board catalogue also includes other QEMU and hardware targets; follow each target’s documented runner and prerequisites.</p>
+            <p>The main path uses a physical Pico 1 with OpenOCD, or the ready-built UF2 through USB BOOTSEL. Pico 1 QEMU is an optional variant when a compatible executable is already available.</p>
             <h3>Prerequisites</h3>
             <ul>
               <li>The Rust nightly selected by the repository, Cargo and ARM GNU tools.</li>
-              <li>QEMU build dependencies for the Pico 1 software path.</li>
+              <li>Optionally, a compatible Pico 1 QEMU executable for the emulated path.</li>
               <li>For hardware: a Pico, a CMSIS-DAP-compatible SWD probe, OpenOCD with RP2040 support and a 115200-baud UART bridge.</li>
             </ul>
           </section>
@@ -67,14 +67,15 @@
             <p class="eyebrow">Build</p>
             <h2>Create the devkit image.</h2>
             <ol class="step-list">
-              <li><div><strong>Clone the pinned beta.</strong>Check out the release tag and its two recorded submodules.</div></li>
+              <li><div><strong>Clone the pinned beta.</strong>Check out the release tag and initialize the build helper used by this path.</div></li>
               <li><div><strong>Install the documented tools.</strong>Follow the versioned setup guide for host and target prerequisites.</div></li>
               <li><div><strong>Build the permissive manifest.</strong>Use the devkit composition for your chosen target; the Pico 1 example is shown below.</div></li>
             </ol>
-            <pre><code>git clone --recurse-submodules --branch v1.0.0-beta.0 \
+            <pre><code>git clone --branch v1.0.0-beta.1 \
   https://github.com/oxide-se/oxide-se.git
 cd oxide-se
-cargo run build --config configs/config_devkit.toml raspi-pico1</code></pre>
+git submodule update --init tooling/build-fae
+cargo run -- build --config configs/config_devkit.toml raspi-pico1</code></pre>
             <p>The expected artifact is <code>target/kernel/firmware/kernel.elf</code>.</p>
             <div class="callout"><strong>Build stops at an ELF.</strong>It does not flash a board or start QEMU. Choose one of the startup paths in the getting-started guide next.</div>
           </section>
@@ -107,7 +108,7 @@ cd ../..
 target/debug/apdu_tool --progress gp deploy \
   A0000047504F5320 \
   rustlets/tests/getting_started_test/build/rustlet_getting_started_test.fae \
-  A0000047504F5320
+  A0000047504F5320 --security-domain A0000047504F5301
 target/debug/apdu_tool select A0000047504F5320
 target/debug/apdu_tool raw 00:04:00:00:00:03</code></pre>
             <p>The final command should return <code>10 11 12</code> and status <code>90 00</code>. The ATR command creates <code>session.json</code>; run the remaining commands from the same directory and do not read the ATR again during that boot.</p>
@@ -122,26 +123,26 @@ target/debug/apdu_tool raw 00:04:00:00:00:03</code></pre>
 cd rustlets/my_first_rustlet
 RUSTLET_TARGET=thumbv6m-none-eabi cargo build-fae
 cd ../..</code></pre>
-            <p>Deploy the resulting <code>rustlets/my_first_rustlet/build/my_first_rustlet.fae</code> with an unused test AID, then select that same instance AID. Changing a Rustlet does not require rebuilding or reflashing the running devkit.</p>
-            <p><a class="chapter-link" href="/api/v1.0.0-beta.0/rustlet_runtime/">Open the Rustlet API reference <span aria-hidden="true">→</span></a></p>
+            <p>The complete authoring walkthrough reserves package AID <code>A0000047504F5321</code> and instance AID <code>A0000047504F5322</code>, deploys the resulting <code>rustlets/my_first_rustlet/build/my_first_rustlet.fae</code>, and verifies the application response <code>CA FE</code>. Changing a Rustlet does not require rebuilding or reflashing the running devkit.</p>
+            <p><a class="chapter-link" href="/api/v1.0.0-beta.1/rustlet_runtime/">Open the Rustlet API reference <span aria-hidden="true">→</span></a></p>
             <p>The versioned Rustdoc documents <code>Rustlet</code>, <code>declare_rustlet!</code>, typed APDU processing, persistence and kernel-backed cryptographic services. Keep it open while implementing <code>src/main.rs</code>.</p>
-            <div class="callout"><strong>Two documented routes.</strong>The development-kit walkthrough uses dynamic loading on Pico 1. The separate Rustlets getting-started exercise demonstrates template authoring through a predeployed <code>mps2-an385</code> image and therefore uses <code>thumbv7m-none-eabi</code>. Do not mix its target triple or transport with the Pico 1 commands above.</div>
+            <div class="callout"><strong>One end-to-end authoring path.</strong>The Rustlets getting-started guide creates <code>my_first_rustlet</code> from the template, builds it for Pico 1, loads it dynamically and checks its APDU response. The predeployed fixture is documented separately as a regression shortcut.</div>
           </section>
 
           <section id="continue">
             <p class="eyebrow">Versioned documentation</p>
             <h2>Continue from the result.</h2>
             <div class="next-links">
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/getting-started.md"><strong>Development-kit walkthrough →</strong>Build QEMU, boot the image, load a Rustlet and send APDUs.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/rustlets.getting.started.md"><strong>Rustlets getting started →</strong>Create an application from the template and implement a handler.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/docs/rustlet.developper.guide.md"><strong>Rustlet developer guide →</strong>Go deeper into the runtime, ABI and application model.</a>
-              <a class="next-link" href="/api/v1.0.0-beta.0/rustlet_runtime/"><strong>Rustlet API reference →</strong>Browse the versioned Rustdoc for the runtime, APDU, crypto and Security Domain APIs.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/tree/v1.0.0-beta.0/rustlets/rustlet_template"><strong>Rustlet template →</strong>Start from the repository’s minimal standalone application.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/getting-started.md"><strong>Development-kit walkthrough →</strong>Build or download the firmware, boot a board, load a Rustlet and send APDUs.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/rustlets.getting.started.md"><strong>Rustlets getting started →</strong>Create an application from the template and implement a handler.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/rustlet.developper.guide.md"><strong>Rustlet developer guide →</strong>Go deeper into the runtime, ABI and application model.</a>
+              <a class="next-link" href="/api/v1.0.0-beta.1/rustlet_runtime/"><strong>Rustlet API reference →</strong>Browse the versioned Rustdoc for the runtime, APDU, crypto and Security Domain APIs.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/tree/v1.0.0-beta.1/rustlets/rustlet_template"><strong>Rustlet template →</strong>Start from the repository’s minimal standalone application.</a>
             </div>
           </section>
         </div>
       </div>
     </main>
-    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v1.0.0-beta.0</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="/downloads/">Downloads</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.0">Release</a><a href="/api/v1.0.0-beta.0/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.0/LICENSE">License</a></nav></footer>
+    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v1.0.0-beta.1</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="/downloads/">Downloads</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.1">Release</a><a href="/api/v1.0.0-beta.1/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/LICENSE">License</a></nav></footer>
   </body>
 </html>
