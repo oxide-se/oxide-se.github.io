@@ -4,6 +4,11 @@ This repository contains the static public website for **oXiDe Secure Element**.
 It introduces the project through three paths: the Rustlet devkit,
 GlobalPlatform Security Domain support, and the open-source kernel.
 
+The `/downloads/` page serves dated devkit firmware bundles independently
+of the public source-release tag. Each bundle lives in an immutable versioned
+directory with its own `SHA256SUMS`. Never replace an image at an existing
+download URL; publish a new directory and update the page instead.
+
 ## Local preview
 
 From the repository root, serve the files with any static HTTP server:
@@ -24,7 +29,7 @@ root-relative paths, matching its deployment at `https://oxide-se.github.io/`.
    complete `api/<tag>/` subtree into this repository without removing older
    versions.
 4. Recheck commands and limitations against the documentation at the new tag.
-5. Preview `/`, `/devkit/`, `/globalplatform/`, `/kernel/`, the versioned API,
+5. Preview `/`, `/devkit/`, `/globalplatform/`, `/kernel/`, `/downloads/`, the versioned API,
    and `/404.html` on
    desktop and mobile widths.
 6. Validate local links, keyboard focus, reduced motion, contrast, and 200%

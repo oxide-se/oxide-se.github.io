@@ -131,6 +131,7 @@ h1 { max-width: 12ch; font-size: clamp(3.6rem, 8vw, 7.4rem); }
 .chapter-content { max-width: 59rem; }
 .chapter h2 { font-size: clamp(2.65rem, 4.7vw, 4.8rem); }
 .chapter-content > p:not(.eyebrow) { max-width: 42rem; margin: 2rem 0; font-size: clamp(1.05rem, 1.6vw, 1.35rem); }
+.chapter-content > .chapter-secondary { margin: .75rem 0 0 !important; font-size: .94rem !important; font-weight: 700; }
 .chapter-link { display: inline-flex; gap: 1rem; align-items: center; padding: .75rem 0; font-weight: 800; font-size: 1rem; text-decoration-thickness: 2px; }
 .chapter-note {
   align-self: stretch;
@@ -156,6 +157,7 @@ h1 { max-width: 12ch; font-size: clamp(3.6rem, 8vw, 7.4rem); }
 .guide-devkit { --guide-bg: #f2c75c; --guide-ink: #211f18; --guide-accent: #6d5200; }
 .guide-gp { --guide-bg: #69d3c5; --guide-ink: #102b2a; --guide-accent: #075e5b; }
 .guide-kernel { --guide-bg: #f39a7e; --guide-ink: #281b18; --guide-accent: #8e321f; }
+.guide-downloads { --guide-bg: #e8f4f3; --guide-ink: #102b2a; --guide-accent: #087b76; }
 .guide .site-header { color: var(--guide-ink); background: color-mix(in srgb, var(--guide-bg) 92%, transparent); }
 .guide .site-nav { color: inherit; background: transparent; }
 .guide-main { min-height: 100svh; padding-top: var(--header-height); }
@@ -222,12 +224,23 @@ code { font: .9em/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 .next-link strong { display: block; margin-bottom: .35rem; }
 .guide-footer { color: #fff; background: #0b1f1e; }
 
+.download-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+.download-card { min-width: 0; padding: 1.4rem; border: 1px solid currentColor; }
+.download-card h3 { margin: 0 0 1.5rem; }
+.download-card h3 small { display: block; margin-top: .2rem; font-size: .68em; font-weight: 550; }
+.download-card p { margin: 1rem 0 0; }
+.download-file { display: flex; justify-content: space-between; gap: .75rem; align-items: baseline; font-weight: 800; }
+.download-file span { font-size: .8rem; font-weight: 550; text-align: right; }
+.checksum { margin-top: .3rem !important; font-size: .72rem; }
+.checksum span { display: block; font-weight: 750; }
+.checksum code { display: block; overflow-wrap: anywhere; user-select: all; }
+
 .not-found { min-height: 100svh; display: grid; place-items: center; padding: 2rem; background: var(--paper); }
 .not-found main { max-width: 48rem; }
 .not-found h1 { font-size: clamp(5rem, 20vw, 12rem); }
 .not-found p { font-size: 1.25rem; }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   :root { --header-height: 4rem; }
   html { scroll-snap-type: none; }
   .site-header { align-items: center; }
@@ -263,6 +276,7 @@ code { font: .9em/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   .guide-layout { grid-template-columns: 1fr; }
   .guide-aside { position: static; }
   .next-links { grid-template-columns: 1fr; }
+  .download-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
