@@ -28,7 +28,7 @@
     <main id="main" class="guide-main">
       <section class="guide-hero" data-number="↓" aria-labelledby="page-title">
         <div>
-          <p class="eyebrow">Devkit images / 2026.10.14</p>
+          <p class="eyebrow">Devkit images / 2026.10.15</p>
           <h1 id="page-title">Download a devkit image.</h1>
           <p class="guide-summary">Ready-built firmware for Raspberry Pi Pico 1 and Pico 2. Choose an ELF for OpenOCD or a UF2 for USB BOOTSEL.</p>
         </div>
@@ -55,16 +55,16 @@
             <div class="download-grid">
               <article class="download-card">
                 <h3>Pico 1 <small>RP2040 · 2 MiB flash</small></h3>
-                <p><a class="download-file" href="/downloads/devkit-2026.10.14/oxide-se-devkit-pico1.elf" download>Download ELF <span>OpenOCD · Pico 1 QEMU</span></a></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.10.15/oxide-se-devkit-pico1.elf" download>Download ELF <span>OpenOCD · Pico 1 QEMU</span></a></p>
                 <p class="checksum"><span>ELF SHA-256</span><code>5d9e14959d0fe26b7eab807316ed39be835883a32afe3823d728886fc514a49a</code></p>
-                <p><a class="download-file" href="/downloads/devkit-2026.10.14/oxide-se-devkit-pico1.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.10.15/oxide-se-devkit-pico1.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
                 <p class="checksum"><span>UF2 SHA-256</span><code>c63fa21c368c5e93b9bad24ee18de8d9eeef9a4742cd9be65432ba6198414c84</code></p>
               </article>
               <article class="download-card">
                 <h3>Pico 2 <small>RP2350 · 4 MiB flash</small></h3>
-                <p><a class="download-file" href="/downloads/devkit-2026.10.14/oxide-se-devkit-pico2.elf" download>Download ELF <span>OpenOCD</span></a></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.10.15/oxide-se-devkit-pico2.elf" download>Download ELF <span>OpenOCD</span></a></p>
                 <p class="checksum"><span>ELF SHA-256</span><code>38fb49e74a453228fdfb95592c8bb40c4ce6c7671fcfad2f8fc989cf74c62872</code></p>
-                <p><a class="download-file" href="/downloads/devkit-2026.10.14/oxide-se-devkit-pico2.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.10.15/oxide-se-devkit-pico2.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
                 <p class="checksum"><span>UF2 SHA-256</span><code>20d212802f771712565196a78bf37eac9d80a08d386575bc321e144ab70f23f1</code></p>
               </article>
             </div>
@@ -73,7 +73,7 @@
           <section id="verify">
             <p class="eyebrow">Integrity</p>
             <h2>Check the download.</h2>
-            <p><a class="chapter-link" href="/downloads/devkit-2026.10.14/SHA256SUMS" download>Download SHA256SUMS <span aria-hidden="true">→</span></a></p>
+            <p><a class="chapter-link" href="/downloads/devkit-2026.10.15/SHA256SUMS" download>Download SHA256SUMS <span aria-hidden="true">→</span></a></p>
             <p>Keep the checksum file beside the four downloaded images. With all four files present, run:</p>
             <pre><code>sha256sum -c SHA256SUMS        # Linux
 shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
@@ -85,7 +85,7 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
             <h2>Use a development board.</h2>
             <div class="callout"><strong>Full-flash erase.</strong>Each UF2 resets the board's entire declared flash, including previously loaded applications and persistent data. The documented OpenOCD installation path also erases the flash. Back up anything you need first.</div>
             <p>USB BOOTSEL installs the firmware; runtime APDUs use UART0 on GPIO0/GPIO1 at 115200 baud. Open the UART client before boot if you need to capture the one-time ATR.</p>
-            <p>This bundle passed a Pico 1 QEMU tutorial run and a physical Pico 2 OpenOCD tutorial run. Physical Pico 1 installation and USB BOOTSEL transfer were not exercised for this bundle. The UF2 payloads were verified against the corresponding full-flash ELF images.</p>
+            <p>This bundle passed its clear-management checks on a physical Pico 1 through OpenOCD. The refreshed source also passed the Pico 1 QEMU Rustlet and Security Domain campaigns. Pico 2 hardware and physical USB BOOTSEL transfer were not exercised for this bundle. The UF2 payloads were verified against the corresponding full-flash ELF images.</p>
             <p><a href="/devkit/">Explore the Devkit path</a>, or follow the <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/getting-started.md">versioned getting-started guide</a>. Both are pinned to <code>v1.0.0-beta.1</code> and match these images.</p>
           </section>
         </div>
@@ -93,8 +93,8 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
     </main>
 
     <footer class="site-footer guide-footer">
-      <div><p class="footer-brand">oXiDe Secure Element</p><p>Devkit images — 2026.10.14</p></div>
-      <nav aria-label="Project links"><a href="/">Home</a><a href="/devkit/">Devkit</a><a href="/downloads/devkit-2026.10.14/SHA256SUMS">SHA256SUMS</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.1">Release</a><a href="/api/v1.0.0-beta.1/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se">Code</a></nav>
+      <div><p class="footer-brand">oXiDe Secure Element</p><p>Devkit images — 2026.10.15</p></div>
+      <nav aria-label="Project links"><a href="/">Home</a><a href="/devkit/">Devkit</a><a href="/downloads/devkit-2026.10.15/SHA256SUMS">SHA256SUMS</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.1">Release</a><a href="/api/v1.0.0-beta.1/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se">Code</a></nav>
     </footer>
   </body>
 </html>
