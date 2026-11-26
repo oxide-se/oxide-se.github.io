@@ -45,6 +45,7 @@
             <li><a href="#images">Choose an image</a></li>
             <li><a href="#verify">Verify SHA-256</a></li>
             <li><a href="#before-installing">Before installing</a></li>
+            <li><a href="#qemu-pico1">Pico 1 emulator</a></li>
           </ul>
         </aside>
         <div class="guide-content">
@@ -87,6 +88,14 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
             <p>USB BOOTSEL installs the firmware; runtime APDUs use UART0 on GPIO0/GPIO1 at 115200 baud. Open the UART client before boot if you need to capture the one-time ATR.</p>
             <p>This bundle passed its clear-management checks on a physical Pico 1 through OpenOCD. The refreshed source also passed the Pico 1 QEMU Rustlet and Security Domain campaigns. Pico 2 hardware and physical USB BOOTSEL transfer were not exercised for this bundle. The UF2 payloads were verified against the corresponding full-flash ELF images.</p>
             <p><a href="/devkit/">Explore the Devkit path</a>, or follow the <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/docs/getting-started.md">versioned getting-started guide</a>. Both are pinned to <code>v1.0.0-beta.2</code> and match these images.</p>
+          </section>
+
+          <section id="qemu-pico1">
+            <p class="eyebrow">Emulation</p>
+            <h2>Get QEMU for Pico 1.</h2>
+            <p>The experimental Pico 1 port adds the <code>raspi-pico</code> machine to <code>qemu-system-arm</code>. Upstream QEMU does not yet include this machine.</p>
+            <p><a class="chapter-link" href="https://github.com/2xs/qemu-rp2040-pico/releases/tag/pico1-qemu-11.1.50-rfc1">Download QEMU for Linux x86-64 (amd64) <span aria-hidden="true">→</span></a></p>
+            <p>The release includes the prebuilt executable, a demo firmware, startup instructions and SHA-256 checksums. For macOS on Apple Silicon (arm64), use the <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/tooling/README.md#3-build-pico-qemu">source build instructions</a>. The <a href="https://github.com/2xs/qemu-rp2040-pico">Pico 1 port source</a> is available on GitHub.</p>
           </section>
         </div>
       </div>
