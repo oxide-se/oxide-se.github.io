@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["REQUEST_CAPACITY","RESPONSE_CAPACITY"],"enum":["Error"],"fn":["call","request","respond"]};

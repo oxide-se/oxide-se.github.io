@@ -20,7 +20,7 @@
         <a href="/globalplatform/">GlobalPlatform</a>
         <a href="/kernel/">Kernel</a>
         <a href="/downloads/">Downloads</a>
-        <a href="/api/v1.0.0-beta.1/rustlet_runtime/">API docs</a>
+        <a href="/api/v1.0.0-beta.2/rustlet_runtime/">API docs</a>
         <a class="repo-link" href="https://github.com/oxide-se/oxide-se">View code <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -53,7 +53,7 @@
           <section id="full-guide">
             <p class="eyebrow">Before you begin</p>
             <h2>This is the quick start.</h2>
-            <div class="callout"><strong>Looking for the complete walkthrough?</strong>The <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/getting-started.md">versioned Getting Started</a> covers prerequisites, local firmware builds, OpenOCD, troubleshooting and the other supported targets. The shorter path below uses a ready-built UF2 on a physical Pico 1 or Pico 2.</div>
+            <div class="callout"><strong>Looking for the complete walkthrough?</strong>The <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/docs/getting-started.md">versioned Getting Started</a> covers prerequisites, local firmware builds, OpenOCD, troubleshooting and the other supported targets. The shorter path below uses a ready-built UF2 on a physical Pico 1 or Pico 2.</div>
             <p>You need a development Pico, a USB data cable and a 3.3 V UART bridge connected to GPIO0 (Pico TX), GPIO1 (Pico RX) and ground. The UART runs at 115200 baud, 8N1, without flow control.</p>
           </section>
 
@@ -61,16 +61,16 @@
             <p class="eyebrow">Download and prepare</p>
             <h2>Get the image and the tools.</h2>
             <ol class="step-list">
-              <li><div><strong>Download the UF2 for your board.</strong>Use <a href="/downloads/devkit-2026.10.15/oxide-se-devkit-pico1.uf2" download>the Pico 1 image</a> or <a href="/downloads/devkit-2026.10.15/oxide-se-devkit-pico2.uf2" download>the Pico 2 image</a>. Checksums and ELF variants are available on the <a href="/downloads/">Downloads page</a>.</div></li>
-              <li><div><strong>Clone the matching release.</strong>The source, Rustlet ABI and ready-built images are all pinned to <code>v1.0.0-beta.1</code>.</div></li>
+              <li><div><strong>Download the UF2 for your board.</strong>Use <a href="/downloads/devkit-2026.11.26/oxide-se-devkit-pico1.uf2" download>the Pico 1 image</a> or <a href="/downloads/devkit-2026.11.26/oxide-se-devkit-pico2.uf2" download>the Pico 2 image</a>. Checksums and ELF variants are available on the <a href="/downloads/">Downloads page</a>.</div></li>
+              <li><div><strong>Clone the matching release.</strong>The source, Rustlet ABI and ready-built images are all pinned to <code>v1.0.0-beta.2</code>.</div></li>
               <li><div><strong>Build the host client.</strong>Initialize the FAE build helper, then compile <code>apdu_tool</code>.</div></li>
             </ol>
-            <pre><code>git clone --branch v1.0.0-beta.1 \
+            <pre><code>git clone --branch v1.0.0-beta.2 \
   https://github.com/oxide-se/oxide-se.git
 cd oxide-se
 git submodule update --init tooling/build-fae
 cargo build -p apdu_tool</code></pre>
-            <p>If a required host tool is missing, stop here and follow the <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/tooling/README.md">versioned setup instructions</a>.</p>
+            <p>If a required host tool is missing, stop here and follow the <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/tooling/README.md">versioned setup instructions</a>.</p>
           </section>
 
           <section id="boot">
@@ -127,16 +127,16 @@ target/debug/apdu_tool raw 00:04:00:00:00:02</code></pre>
             <p class="eyebrow">Versioned documentation</p>
             <h2>Continue from the result.</h2>
             <div class="next-links">
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/getting-started.md"><strong>Complete Getting Started →</strong>Install prerequisites, build or download the firmware, use OpenOCD when needed, and troubleshoot the complete path.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/rustlets.getting.started.md"><strong>Rustlets Getting Started →</strong>Copy the template into your own application, implement a complete handler and understand its lifecycle.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/docs/rustlet.developper.guide.md"><strong>Rustlet developer guide →</strong>Go deeper into the runtime, ABI and application model.</a>
-              <a class="next-link" href="/api/v1.0.0-beta.1/rustlet_runtime/"><strong>Rustlet API reference →</strong>Browse the versioned Rustdoc for the runtime, APDU, crypto and Security Domain APIs.</a>
-              <a class="next-link" href="https://github.com/oxide-se/oxide-se/tree/v1.0.0-beta.1/rustlets/rustlet_template"><strong>Rustlet template →</strong>Start from the repository’s minimal standalone application.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/docs/getting-started.md"><strong>Complete Getting Started →</strong>Install prerequisites, build or download the firmware, use OpenOCD when needed, and troubleshoot the complete path.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/docs/rustlets.getting.started.md"><strong>Rustlets Getting Started →</strong>Copy the template into your own application, implement a complete handler and understand its lifecycle.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/docs/rustlet.developper.guide.md"><strong>Rustlet developer guide →</strong>Go deeper into the runtime, ABI and application model.</a>
+              <a class="next-link" href="/api/v1.0.0-beta.2/rustlet_runtime/"><strong>Rustlet API reference →</strong>Browse the versioned Rustdoc for the runtime, APDU, crypto and Security Domain APIs.</a>
+              <a class="next-link" href="https://github.com/oxide-se/oxide-se/tree/v1.0.0-beta.2/rustlets/rustlet_template"><strong>Rustlet template →</strong>Start from the repository’s minimal standalone application.</a>
             </div>
           </section>
         </div>
       </div>
     </main>
-    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v1.0.0-beta.1</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="/downloads/">Downloads</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.1">Release</a><a href="/api/v1.0.0-beta.1/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.1/LICENSE">License</a></nav></footer>
+    <footer class="site-footer guide-footer"><div><p class="footer-brand">oXiDe Secure Element</p><p>Research beta — v1.0.0-beta.2</p></div><nav aria-label="Project links"><a href="/">Home</a><a href="/downloads/">Downloads</a><a href="https://github.com/oxide-se/oxide-se">Code</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.2">Release</a><a href="/api/v1.0.0-beta.2/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/LICENSE">License</a></nav></footer>
   </body>
 </html>
