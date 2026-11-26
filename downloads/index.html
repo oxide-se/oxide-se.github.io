@@ -87,7 +87,7 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
             <div class="callout"><strong>Full-flash erase.</strong>Each UF2 resets the board's entire declared flash, including previously loaded applications and persistent data. The documented OpenOCD installation path also erases the flash. Back up anything you need first.</div>
             <p>USB BOOTSEL installs the firmware; runtime APDUs use UART0 on GPIO0/GPIO1 at 115200 baud. Open the UART client before boot if you need to capture the one-time ATR.</p>
             <p>This bundle passed its clear-management checks on a physical Pico 1 through OpenOCD. The refreshed source also passed the Pico 1 QEMU Rustlet and Security Domain campaigns. Pico 2 hardware and physical USB BOOTSEL transfer were not exercised for this bundle. The UF2 payloads were verified against the corresponding full-flash ELF images.</p>
-            <p><a href="/devkit/">Explore the Devkit path</a>, or follow the <a href="https://github.com/oxide-se/oxide-se/blob/v1.0.0-beta.2/docs/getting-started.md">versioned getting-started guide</a>. Both are pinned to <code>v1.0.0-beta.2</code> and match these images.</p>
+            <p><a href="/devkit/">Explore the Devkit path</a>, or follow the <a href="https://github.com/oxide-se/oxide-se/blob/main/docs/getting-started.md">latest Getting Started</a> on <code>main</code>. Use the release tag above when building tools and Rustlets for these images.</p>
           </section>
 
           <section id="qemu-pico1">
@@ -95,7 +95,7 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
             <h2>Get QEMU for Pico 1.</h2>
             <p>The experimental Pico 1 port adds the <code>raspi-pico</code> machine to <code>qemu-system-arm</code>. Upstream QEMU does not yet include this machine.</p>
             <p><a class="chapter-link" href="https://github.com/2xs/qemu-rp2040-pico/releases/tag/rp2040-pico-rfc-v4">Download QEMU for Linux x86-64 and Apple Silicon <span aria-hidden="true">→</span></a></p>
-            <p>Find the platform archives, startup instructions and SHA-256 checksums on the release page. The <a href="https://github.com/2xs/qemu-rp2040-pico">Pico 1 port source</a> is available on GitHub.</p>
+            <p>Find the platform archives and SHA-256 checksums on the release page. To boot the DevKit ELF, follow the <a href="https://github.com/oxide-se/oxide-se/blob/main/docs/getting-started.md#software-emulation-of-pico1">Pico 1 emulation walkthrough</a>. The <a href="https://github.com/2xs/qemu-rp2040-pico">Pico 1 port source</a> is available on GitHub.</p>
           </section>
         </div>
       </div>
