@@ -28,7 +28,7 @@
     <main id="main" class="guide-main">
       <section class="guide-hero" data-number="↓" aria-labelledby="page-title">
         <div>
-          <p class="eyebrow">Devkit images / 2026.11.26</p>
+          <p class="eyebrow">Devkit images / 2026.11.27</p>
           <h1 id="page-title">Download a devkit image.</h1>
           <p class="guide-summary">Ready-built firmware for Raspberry Pi Pico 1 and Pico 2. Choose an ELF for OpenOCD or a UF2 for USB BOOTSEL.</p>
         </div>
@@ -56,17 +56,17 @@
             <div class="download-grid">
               <article class="download-card">
                 <h3>Pico 1 <small>RP2040 · 2 MiB flash</small></h3>
-                <p><a class="download-file" href="/downloads/devkit-2026.11.26/oxide-se-devkit-pico1.elf" download>Download ELF <span>OpenOCD · Pico 1 QEMU</span></a></p>
-                <p class="checksum"><span>ELF SHA-256</span><code>edc8ef82730f30042d5f8c29bcaba8b8fd7c918096389aa58a0ee4d6fd974bc3</code></p>
-                <p><a class="download-file" href="/downloads/devkit-2026.11.26/oxide-se-devkit-pico1.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
-                <p class="checksum"><span>UF2 SHA-256</span><code>72e810522f14a094b0b08c3fac74ca47119a85ade023cffd2eff4f69137bcdc6</code></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.11.27/oxide-se-devkit-pico1.elf" download>Download ELF <span>OpenOCD · Pico 1 QEMU</span></a></p>
+                <p class="checksum"><span>ELF SHA-256</span><code>0b96cf8bebdb635678ad12444f72de4a12e385817c6b91f0f777c64a68eb4519</code></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.11.27/oxide-se-devkit-pico1.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
+                <p class="checksum"><span>UF2 SHA-256</span><code>2ad1771cd78c55e971c1c174eadb48850588b57f05580209c0176e493eca1aac</code></p>
               </article>
               <article class="download-card">
                 <h3>Pico 2 <small>RP2350 · 4 MiB flash</small></h3>
-                <p><a class="download-file" href="/downloads/devkit-2026.11.26/oxide-se-devkit-pico2.elf" download>Download ELF <span>OpenOCD</span></a></p>
-                <p class="checksum"><span>ELF SHA-256</span><code>7becf836ae5d85a4a1360cc3412ee4a131c48e3e215924300f9511a1eb3bbc25</code></p>
-                <p><a class="download-file" href="/downloads/devkit-2026.11.26/oxide-se-devkit-pico2.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
-                <p class="checksum"><span>UF2 SHA-256</span><code>4016e39e25c5e0251dd76c8ea4f5f0fde6465b5c7f2fbe5bdc4e89d99eca274a</code></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.11.27/oxide-se-devkit-pico2.elf" download>Download ELF <span>OpenOCD</span></a></p>
+                <p class="checksum"><span>ELF SHA-256</span><code>8679d811372769d0b0f3cfc4e740a1594351ab4277d60f25f5736bd0ee9355bf</code></p>
+                <p><a class="download-file" href="/downloads/devkit-2026.11.27/oxide-se-devkit-pico2.uf2" download>Download UF2 <span>USB BOOTSEL</span></a></p>
+                <p class="checksum"><span>UF2 SHA-256</span><code>c252daccf3e62f70cd8d6520e36777046bb136e5d5bdbefa2135dfa0a0d2f21e</code></p>
               </article>
             </div>
           </section>
@@ -74,7 +74,7 @@
           <section id="verify">
             <p class="eyebrow">Integrity</p>
             <h2>Check the download.</h2>
-            <p><a class="chapter-link" href="/downloads/devkit-2026.11.26/SHA256SUMS" download>Download SHA256SUMS <span aria-hidden="true">→</span></a></p>
+            <p><a class="chapter-link" href="/downloads/devkit-2026.11.27/SHA256SUMS" download>Download SHA256SUMS <span aria-hidden="true">→</span></a></p>
             <p>Keep the checksum file beside the four downloaded images. With all four files present, run:</p>
             <pre><code>sha256sum -c SHA256SUMS        # Linux
 shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
@@ -86,7 +86,7 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
             <h2>Use a development board.</h2>
             <div class="callout"><strong>Full-flash erase.</strong>Each UF2 resets the board's entire declared flash, including previously loaded applications and persistent data. The documented OpenOCD installation path also erases the flash. Back up anything you need first.</div>
             <p>USB BOOTSEL installs the firmware; runtime APDUs use UART0 on GPIO0/GPIO1 at 115200 baud. Open the UART client before boot if you need to capture the one-time ATR.</p>
-            <p>This bundle passed its clear-management checks on a physical Pico 1 through OpenOCD. The refreshed source also passed the Pico 1 QEMU Rustlet and Security Domain campaigns. Pico 2 hardware and physical USB BOOTSEL transfer were not exercised for this bundle. The UF2 payloads were verified against the corresponding full-flash ELF images.</p>
+            <p>The Pico 1 flash regression checks and the Getting Started Rustlet deployment passed under QEMU. We verified both UF2 payloads against the full flash images reconstructed from the corresponding ELFs.</p>
             <p><a href="/devkit/">Explore the Devkit path</a>, or follow the <a href="https://github.com/oxide-se/oxide-se/blob/main/docs/getting-started.md">latest Getting Started</a> on <code>main</code>. Use the release tag above when building tools and Rustlets for these images.</p>
           </section>
 
@@ -102,8 +102,8 @@ shasum -a 256 -c SHA256SUMS  # macOS</code></pre>
     </main>
 
     <footer class="site-footer guide-footer">
-      <div><p class="footer-brand">oXiDe Secure Element</p><p>Devkit images — 2026.11.26</p></div>
-      <nav aria-label="Project links"><a href="/">Home</a><a href="/devkit/">Devkit</a><a href="/downloads/devkit-2026.11.26/SHA256SUMS">SHA256SUMS</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.2">Release</a><a href="/api/v1.0.0-beta.2/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se">Code</a></nav>
+      <div><p class="footer-brand">oXiDe Secure Element</p><p>Devkit images — 2026.11.27</p></div>
+      <nav aria-label="Project links"><a href="/">Home</a><a href="/devkit/">Devkit</a><a href="/downloads/devkit-2026.11.27/SHA256SUMS">SHA256SUMS</a><a href="https://github.com/oxide-se/oxide-se/releases/tag/v1.0.0-beta.2">Release</a><a href="/api/v1.0.0-beta.2/rustlet_runtime/">Rustlet API</a><a href="https://github.com/oxide-se/oxide-se">Code</a></nav>
     </footer>
   </body>
 </html>
